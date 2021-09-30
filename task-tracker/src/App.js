@@ -48,7 +48,7 @@ const App = () => {
   //The "&&"" works like an if but without an else, cause in this casewe don't need an else
   return (
     <div className="container">
-      <Header />
+      <Header onAdd={() => setShowAddTask(!showAddTask)}/>
       {showAddTask && <AddTask onAdd={addTask} />}
 
       {tasks.length > 0 ?
