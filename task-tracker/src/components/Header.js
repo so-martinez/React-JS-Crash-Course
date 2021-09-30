@@ -1,12 +1,13 @@
 //first letter on uppercase is a convention for components
 //this used to be required but not anymore: import React from 'react'
 import PropTypes from 'prop-types'
+import Button from './Button'
 
 const Header = ({title}) => {
     return (
         <header className='header'>
             <h1>{title}</h1>
-            <button className='btn'>Add</button>
+            <Button />
         </header>
     )
 }
