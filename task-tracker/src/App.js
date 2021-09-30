@@ -4,6 +4,7 @@ import Tasks from './components/Tasks'
 import AddTask from './components/AddTask';
 
 const App = () => {
+  const [showAddTask, setShowAddTask] = useState(false)
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -44,11 +45,11 @@ const App = () => {
     ))
   }
 
+  //The "&&"" works like an if but without an else, cause in this casewe don't need an else
   return (
     <div className="container">
       <Header />
-
-      <AddTask onAdd={addTask} />
+      {showAddTask && <AddTask onAdd={addTask} />}
 
       {tasks.length > 0 ?
       (<Tasks
