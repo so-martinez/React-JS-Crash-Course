@@ -1,8 +1,9 @@
 //shortcut: "rafce"
 
-const Button = () => {
+const Button = ({ color, text}) => {
     return (
-        <button className='btn'>Add</button>
+        <button style={{backgroundColor: color}}
+        className='btn'>{text}</button>
     )
 }
 
