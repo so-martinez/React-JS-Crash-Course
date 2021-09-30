@@ -1,7 +1,10 @@
 import {useState, useEffect } from 'react'
+import { BrowserRouter, Route} from 'react-router-dom'
 import Header from "./components/Header";
 import Tasks from './components/Tasks'
 import AddTask from './components/AddTask';
+import Footer from './components/Footer';
+import About from './components/About';
 
 const App = () => {
   const [showAddTask, setShowAddTask] = useState(false)
@@ -79,23 +82,35 @@ const App = () => {
 
   //The "&&"" works like an if but without an else, cause in this casewe don't need an else
   return (
-    <div className="container">
-      <Header
-        onAdd={() => setShowAddTask(!showAddTask)}
-        showAdd={showAddTask}
-      />
+    <BrowserRouter>
+      <div className="container">
+        <Header
+          onAdd={() => setShowAddTask(!showAddTask)}
+          showAdd={showAddTask}
+        />
 
-      {showAddTask && <AddTask onAdd={addTask} />}
+        <Route
+          path='/'
+          exact
+          render={(props) => (
+            <>
+            {showAddTask && <AddTask onAdd={addTask} />}
 
-      {tasks.length > 0 ?
-      (<Tasks
-        tasks={tasks}
-        onDelete={deleteTask}
-        onToggle={toggleReminder}
-      />)
-      :
-      ('No Tasks To Show')}
-    </div>
+            {tasks.length > 0 ?
+            (<Tasks
+              tasks={tasks}
+              onDelete={deleteTask}
+              onToggle={toggleReminder}
+            />)
+            :
+            ('No Tasks To Show')}
+            </>
+          )}
+        />
+        <Route path='/about' component={About} />
+        <Footer />
+      </div>
+    </BrowserRouter>
   )
 }
 
