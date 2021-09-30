@@ -1,11 +1,7 @@
 //shortcut: "rafce"
 import PropTypes from 'prop-types'
 
-const Button = ({ color, text}) => {
-    const onClick = () => {
-        console.log('click')
-    }
-
+const Button = ({ color, text, onClick}) => {
     return (
         <button
             onClick={onClick}
@@ -22,7 +18,8 @@ Button.defaultProps = {
 
 Button.propTypes = {
     text: PropTypes.string,
-    color: PropTypes.string
+    color: PropTypes.string,
+    onClick: PropTypes.func
 }
 
 export default Button
